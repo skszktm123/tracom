@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junskim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 11:54:54 by junskim           #+#    #+#             */
-/*   Updated: 2021/04/14 14:52:10 by junskim          ###   ########.fr       */
+/*   Created: 2021/04/15 01:06:09 by junskim           #+#    #+#             */
+/*   Updated: 2021/04/15 02:00:56 by junskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
-{
-	int index;
+#include <stdio.h>
 
-	index = 0;
-	while (*str)
+int		ft_fibonacci(int index)
+{
+	if (index < 0)
 	{
-		str++;
-		index++;
+		return (-1);
 	}
-	return (index);
+	if (index < 2)
+	{
+		return (index);
+	}
+	return (ft_fibonacci(index - 2) + ft_fibonacci(index - 1));
 }

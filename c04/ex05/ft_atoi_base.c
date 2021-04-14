@@ -1,69 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junskim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 18:45:29 by junskim           #+#    #+#             */
-/*   Updated: 2021/04/14 22:19:24 by junskim          ###   ########.fr       */
+/*   Created: 2021/04/14 14:48:13 by junskim           #+#    #+#             */
+/*   Updated: 2021/04/14 14:49:00 by junskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdbool.h>
-#include <stdio.h>
 
-bool	interpace(char c, char *str)
+int		ft_atoi_base(char *str, char *base)
 {
-	while (*str)
-	{
-		if (*str == c)
-		{
-			return (true);
-		}
-		str++;
-	}
-	return (false);
-}
+	int	radix;
+	int	result;
+	int	minus;
+	int	resolved;
 
-bool	space(char c)
-{
-	return (interpace(c, "\n\t\v\f\r "));
-}
-
-bool	check_minus(char c)
-{
-	return (interpace(c, "+-"));
-}
-
-bool	number(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int		ft_atoi(char *str)
-{
-	int minus;
-	int result;
-
-	minus = 1;
+	if (!is_base_valid(base))
+		return (0);
+	radix = ft_strlen(base);
 	result = 0;
-	while (space(*str))
-	{
+	minus = 1;
+	while (is_space(*str))
 		str++;
-	}
-	while (check_minus(*str))
+	while (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-		{
 			minus *= -1;
-		}
 		str++;
 	}
-	while (number(*str))
+	while ((resolved = resolve_base(base, *str)) != NO_MATCH)
 	{
-		result *= 10;
-		result += *str - '0';
+		result *= radix;
+		result += resolved;
 		str++;
 	}
 	return (result * minus);

@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junskim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 11:54:54 by junskim           #+#    #+#             */
-/*   Updated: 2021/04/14 14:52:10 by junskim          ###   ########.fr       */
+/*   Created: 2021/04/15 03:03:56 by junskim           #+#    #+#             */
+/*   Updated: 2021/04/15 04:16:24 by junskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int		ft_is_prime(int nb)
 {
-	int index;
+	int		index;
+	int		count;
 
-	index = 0;
-	while (*str)
+	count = 0;
+	index = 1;
+	if (nb == 1 || nb <= 0)
+		return (0);
+	while (index <= nb)
 	{
-		str++;
-		index++;
+		if ((nb % index) == 0)
+		{
+			count++;
+			index++;
+		}
+		else if ((nb % index) != 0)
+		{
+			index++;
+		}
 	}
-	return (index);
+	if (count > 2)
+		return (0);
+	if (count <= 2)
+		return (1);
+	return (0);
 }

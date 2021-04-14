@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junskim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 11:54:54 by junskim           #+#    #+#             */
-/*   Updated: 2021/04/14 14:52:10 by junskim          ###   ########.fr       */
+/*   Created: 2021/04/14 22:33:44 by junskim           #+#    #+#             */
+/*   Updated: 2021/04/15 01:02:26 by junskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int		ft_iterative_factorial(int nb)
 {
-	int index;
+	int a;
+	int factorial;
 
-	index = 0;
-	while (*str)
+	a = 1;
+	factorial = 1;
+	if (nb < 0)
 	{
-		str++;
-		index++;
+		return (0);
 	}
-	return (index);
+	while (a <= nb)
+	{
+		factorial = factorial * a++;
+	}
+	return (factorial);
 }

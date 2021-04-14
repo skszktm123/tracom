@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junskim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 11:54:54 by junskim           #+#    #+#             */
-/*   Updated: 2021/04/14 14:52:10 by junskim          ###   ########.fr       */
+/*   Created: 2021/04/14 19:06:30 by junskim           #+#    #+#             */
+/*   Updated: 2021/04/14 19:20:19 by junskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	while (*str)
+	{
+		write(1, str++, 1);
+	}
+}
+
+int		main(int argc, char **argv)
 {
 	int index;
 
-	index = 0;
-	while (*str)
+	index = 1;
+	while (index < argc)
 	{
-		str++;
+		ft_putstr(argv[index]);
+		write(1, "\n", 1);
 		index++;
 	}
-	return (index);
 }

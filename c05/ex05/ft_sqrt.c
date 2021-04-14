@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junskim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 11:54:54 by junskim           #+#    #+#             */
-/*   Updated: 2021/04/14 14:52:10 by junskim          ###   ########.fr       */
+/*   Created: 2021/04/15 02:01:39 by junskim           #+#    #+#             */
+/*   Updated: 2021/04/15 03:03:10 by junskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int		ft_sqrt(int nb)
 {
-	int index;
+	unsigned int	index;
 
+	if (nb < 0)
+		return (0);
+	if (nb <= 1)
+		return (nb);
 	index = 0;
-	while (*str)
+	while ((index * index) <= (unsigned int)nb)
 	{
-		str++;
 		index++;
 	}
-	return (index);
+	index -= 1;
+	if (index * index == (unsigned int)nb)
+	{
+		return (index);
+	}
+	if (index * index != (unsigned int)nb)
+	{
+		return (0);
+	}
 }
